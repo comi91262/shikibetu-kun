@@ -32,13 +32,9 @@ func main() {
 	}
 	defer fp.Close()
 
-	//	fp1, err := os.Create("product/hoge")
-	//	if err != nil {
-	//		log.Fatal(err)
-	//	}
-	//	defer fp1.Close()
-
 	scanner := bufio.NewScanner(fp)
+
+	items := []item{}
 
 	for scanner.Scan() {
 		a := strings.Split(scanner.Text(), " ")
@@ -49,13 +45,24 @@ func main() {
 		//		i.bless = int(float32(i.buy) * 2.0)
 		//		i.curse = int(float32(i.buy) * 0.87)
 
-		fmt.Printf("%d %s\n", i.price, i.name)
+		items = append(items, i)
 	}
 
 	if err = scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
 
+	// fp1, err := os.Create("product/list")
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer fp1.Close()
+
+	fmt.Println("var list = map[int]string{")
+	for _, i := range items {
+		fmt.Printf(fmt.Sprintf("%d: \"%s\",\n", i.price, i.name))
+	}
+	fmt.Println("}")
 }
 
 func open(filename string) {
