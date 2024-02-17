@@ -9,16 +9,21 @@ import (
 	"strings"
 )
 
+//type item struct {
+//	name  string
+//	buy   int
+//	sell  int
+//	bless int
+//	curse int
+//}
+
 type item struct {
 	name  string
-	buy   int
-	sell  int
-	bless int
-	curse int
+	price int
 }
 
 func main() {
-	filename := "data/weed"
+	filename := "data/item"
 
 	// ファイルオープン
 	fp, err := os.Open(filename)
@@ -39,12 +44,12 @@ func main() {
 		a := strings.Split(scanner.Text(), " ")
 		i := item{}
 		i.name = a[0]
-		i.buy, _ = strconv.Atoi(a[1])
-		i.sell = int(float32(i.buy) * 0.8)
-		i.bless = int(float32(i.buy) * 2.0)
-		i.curse = int(float32(i.buy) * 0.87)
+		i.price, _ = strconv.Atoi(a[1])
+		//		i.sell = int(float32(i.buy) * 0.8)
+		//		i.bless = int(float32(i.buy) * 2.0)
+		//		i.curse = int(float32(i.buy) * 0.87)
 
-		fmt.Printf("%d %s\n", i.buy, i.name)
+		fmt.Printf("%d %s\n", i.price, i.name)
 	}
 
 	if err = scanner.Err(); err != nil {
