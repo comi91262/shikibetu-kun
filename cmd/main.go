@@ -119,7 +119,11 @@ func main() {
 		}
 	}
 	// fmt.Println("}")
-	fmt.Println(buy)
+	// fmt.Println(buy)
+	if len(os.Args) > 0 {
+		m, _ := strconv.Atoi(os.Args[1])
+		fmt.Println(buy[m])
+	}
 }
 
 func open(filename string) {
