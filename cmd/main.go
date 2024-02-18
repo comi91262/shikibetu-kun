@@ -2,12 +2,17 @@ package main
 
 import (
 	"bufio"
+	"bytes"
+	_ "embed"
 	"fmt"
 	"log"
 	"os"
 	"strconv"
 	"strings"
 )
+
+//go:embed data/item
+var data []byte
 
 //type item struct {
 //	name  string
@@ -23,16 +28,17 @@ type item struct {
 }
 
 func main() {
-	filename := "data/item"
+	//	filename := "data/item"
+	//
+	//	// ファイルオープン
+	//	fp, err := os.Open(filename)
+	//	if err != nil {
+	//		log.Fatal(err)
+	//	}
+	//	defer fp.Close()
 
-	// ファイルオープン
-	fp, err := os.Open(filename)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer fp.Close()
-
-	scanner := bufio.NewScanner(fp)
+	reader := bytes.NewReader(data)
+	scanner := bufio.NewScanner(reader)
 
 	items := []item{}
 
@@ -48,7 +54,7 @@ func main() {
 		items = append(items, i)
 	}
 
-	if err = scanner.Err(); err != nil {
+	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
 
@@ -120,10 +126,10 @@ func main() {
 	}
 	// fmt.Println("}")
 	// fmt.Println(buy)
-	if len(os.Args) > 0 {
-		m, _ := strconv.Atoi(os.Args[1])
-		fmt.Println(buy[m])
-	}
+	// if len(os.Args) > 0 {
+	// 	m, _ := strconv.Atoi(os.Args[1])
+	// 	fmt.Println(buy[m])
+	// }
 }
 
 func open(filename string) {
