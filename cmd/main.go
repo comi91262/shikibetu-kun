@@ -9,62 +9,13 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"syscall/js"
 )
 
 //go:embed data/item
 var data []byte
 
-//type item struct {
-//	name  string
-//	buy   int
-//	sell  int
-//	bless int
-//	curse int
-//}
-
-type item struct {
-	name  string
-	price int
-}
-
-func main() {
-	//	filename := "data/item"
-	//
-	//	// ファイルオープン
-	//	fp, err := os.Open(filename)
-	//	if err != nil {
-	//		log.Fatal(err)
-	//	}
-	//	defer fp.Close()
-
-	reader := bytes.NewReader(data)
-	scanner := bufio.NewScanner(reader)
-
-	items := []item{}
-
-	for scanner.Scan() {
-		a := strings.Split(scanner.Text(), " ")
-		i := item{}
-		i.name = a[0]
-		i.price, _ = strconv.Atoi(a[1])
-		//		i.sell =
-		//		i.bless = int(float32(i.buy) * 2.0)
-		//		i.curse =
-
-		items = append(items, i)
-	}
-
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
-
-	// fp1, err := os.Create("product/list")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// defer fp1.Close()
-
-	// fmt.Println("var list = map[int]string{")
+func inspect(this js.Value, i []js.Value) any {
 	var buy = map[int][]string{}
 	var sell = map[int][]string{}
 	for _, i := range items {
@@ -124,12 +75,81 @@ func main() {
 			sell[int(float32(p)*0.87)] = append(sell[int(float32(p)*0.87)], i.name+"[呪]")
 		}
 	}
+
+	// js.Global().Set("output", ))
+	// println(js.ValueOf(i[0].Int()))
+
+	fmt.Println(buy)
+	fmt.Println(i[0])
+	fmt.Println(i[0].Int())
+	fmt.Println(buy[i[0].Int()])
+	return js.ValueOf(convert(buy[i[0].Int()]))
+}
+
+func convert(s []string) []any {
+	r := make([]any, 0, len(s))
+	for _, ss := range s {
+		r = append(r, ss)
+	}
+	return r
+}
+
+func registerCallbacks() {
+	js.Global().Set("inspect", js.FuncOf(inspect))
+}
+
+//type item struct {
+//	name  string
+//	buy   int
+//	sell  int
+//	bless int
+//	curse int
+//}
+
+type item struct {
+	name  string
+	price int
+}
+
+var items []item
+
+func main() {
+	c := make(chan struct{}, 0)
+
+	reader := bytes.NewReader(data)
+	scanner := bufio.NewScanner(reader)
+
+	for scanner.Scan() {
+		a := strings.Split(scanner.Text(), " ")
+		i := item{}
+		i.name = a[0]
+		i.price, _ = strconv.Atoi(a[1])
+
+		items = append(items, i)
+	}
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+
+	println("WASM Go Initialized")
+	// register functions
+	registerCallbacks()
+	<-c
+
+	// fp1, err := os.Create("product/list")
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer fp1.Close()
+
+	// fmt.Println("var list = map[int]string{")
 	// fmt.Println("}")
 	// fmt.Println(buy)
 	// if len(os.Args) > 0 {
 	// 	m, _ := strconv.Atoi(os.Args[1])
 	// 	fmt.Println(buy[m])
 	// }
+	fmt.Println("hello, world")
 }
 
 func open(filename string) {
