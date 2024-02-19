@@ -7,3 +7,14 @@
 
 調べもの
 deno, 
+
+
+
+- add button 
+- display
+- show items
+-
+
+
+
+
