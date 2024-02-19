@@ -1,32 +1,10 @@
-import { useSignal } from "@preact/signals";
+import { useSignal, useComputed, effect } from "@preact/signals";
 import Counter from "../islands/Counter.tsx";
+
+import { Button } from "../components/Button.tsx";
 import Display from "../islands/Display.tsx";
-import "./../wasm_exec.js";
+import Display2 from "../islands/Display2.tsx";
 
-
-
-const path = new URL("../main.wasm", import.meta.url);
-const go = new Go();
-console.log(go);
-const { instance } = await WebAssembly.instantiateStreaming(
-  fetch(path),
-  go.importObject,
-);
-
-go.run(instance);
-
-// go.run(instance);
-
-export const handler: Handlers<Data | null> = {
-    async GET(_request, context) {
-        try {
-            return context.render(null);
-        } catch (error: unknown) {
-            console.error(`Error doing stuff with image file: ${error as string}`);
-            return context.render(null);
-        }
-    },
-};
 
 export default function Home(context: PageProps<Data | null>) {
     const { data } = context;
@@ -37,16 +15,19 @@ export default function Home(context: PageProps<Data | null>) {
     //        </>
     //    );
     //}
+  //  console.log(inspect(200))
     //const { placeholder } = data;
-    console.log(data)
-    console.log(inspect(200))
-    console.log(inspect(200)[1])
+        // <h1 class="text-4xl font-bold">{inspect(200)}</h1>
+    const count = useSignal(200)
+    const text = useComputed(() => inspect(count.value).join());
 
-    const count = useSignal(3);
     return (
-        <div class="px-4 py-8 mx-auto bg-[#86efac]">
-        <Display price={count} />
+        <div class="px-4 py-8 mx-auto bg-[#86efac]">{text.value}
         <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
+
+        <Display price={count} text={text} />
+        <Counter count={count}  />
+        <Button onClick={() => console.log("a")}> aaaaaaac</Button>
         <img
         class="my-6"
         src="/logo.svg"
@@ -54,8 +35,8 @@ export default function Home(context: PageProps<Data | null>) {
         height="128"
         alt="the Fresh logo: a sliced lemon dripping with juice"
         />
-        <h1 class="text-4xl font-bold">Welcome to Fresh</h1>
-        <p class="my-4">
+
+        <p class="my-4">{count}
         Try updating this message in the
         <code class="mx-2">./routes/index.tsx</code> file, and refresh.
         </p>

@@ -1,14 +1,17 @@
 import type { Signal } from "@preact/signals";
+
+import { useSignal, useComputed, effect } from "@preact/signals";
 import { Button } from "../components/Button.tsx";
 
 interface DisplayProps {
   price: Signal<number>;
+  text: Signal<string>;
 }
 
 export default function Display(props: DisplayProps) {
   return (
-    <div class="flex gap-8 py-6">
-      <p class="text-3xl tabular-nums">{props.price}</p>
+    <div class="flex gap-8 py-6">{props.text}
+      <p class="text-3xl tabular-nums">{props.price.value}</p>
         <Button onClick={() => props.price.value = props.price.value * 10 + 1}>1</Button>
         <Button onClick={() => props.price.value = props.price.value * 10 + 2}>2</Button>
         <Button onClick={() => props.price.value = props.price.value * 10 + 3}>3</Button>

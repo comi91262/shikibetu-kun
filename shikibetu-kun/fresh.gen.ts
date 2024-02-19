@@ -13,6 +13,7 @@ import * as $search from "./routes/search.tsx";
 import * as $Countdown from "./islands/Countdown.tsx";
 import * as $Counter from "./islands/Counter.tsx";
 import * as $Display from "./islands/Display.tsx";
+import * as $Display2 from "./islands/Display2.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -30,6 +31,7 @@ const manifest = {
     "./islands/Countdown.tsx": $Countdown,
     "./islands/Counter.tsx": $Counter,
     "./islands/Display.tsx": $Display,
+    "./islands/Display2.tsx": $Display2,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
