@@ -1,8 +1,8 @@
 import { useSignal } from "@preact/signals";
 import Counter from "../islands/Counter.tsx";
+import Display from "../islands/Display.tsx";
 import "./../wasm_exec.js";
 
-import { Button } from "../components/Button.tsx";
 
 
 const path = new URL("../main.wasm", import.meta.url);
@@ -45,18 +45,7 @@ export default function Home(context: PageProps<Data | null>) {
     const count = useSignal(3);
     return (
         <div class="px-4 py-8 mx-auto bg-[#86efac]">
-
-        <Button>1</Button>
-        <Button>2</Button>
-        <Button>3</Button>
-        <Button>4</Button>
-        <Button>5</Button>
-        <Button>6</Button>
-        <Button>7</Button>
-        <Button>8</Button>
-        <Button>9</Button>
-        <Button>0</Button>
-        <Button>Clear</Button>
+        <Display price={count} />
         <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
         <img
         class="my-6"
