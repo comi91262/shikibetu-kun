@@ -10,26 +10,30 @@ interface DisplayProps {
 }
 
 interface State {
-  func: any;
-  text: string;
+  buy: any;
+  sell: any;
+  buyText: string;
+  sellText: string;
   isWasmReady: boolean;
 }
-  
+
 
 export default function Display(props: DisplayProps) {
 
   const [state, setState] = useState<State>({
-    func: null,
-    text: "",
+    buy: null,
+    sell: null,
+    buyText: "ぬれた巻物,高飛び草[祝],くねくね草[祝],いやし草,かぐわし草,胃拡張の種,胃縮小の種",
+    sellText: "ドラゴン草",
     isWasmReady: false,
-  }); 
+  });
 
   useEffect(() => {
     if (!state.isWasmReady) {
-      return 
+      return
     }
 
-    setState({ ...state, text: state.func(props.price.value).join() });
+    setState({ ...state, buyText: state.buy(props.price.value).join(), sellText: state.sell(props.price.value).join() });
   }, [props.price.value]);
 
 
@@ -38,7 +42,7 @@ export default function Display(props: DisplayProps) {
     const r = await WebAssembly.instantiate(props.wasm, go.importObject)
 
     go.run(r.instance)
-    setState({ ...state, func: inspect, isWasmReady: true });
+    setState({ ...state, buy: buy, sell: sell, isWasmReady: true });
   }, []);
 
 
@@ -57,8 +61,9 @@ export default function Display(props: DisplayProps) {
         <Button onClick={() => props.price.value = props.price.value * 10 + 0}>0</Button>
         <Button onClick={() => props.price.value = 0}>Clear</Button>
       </div>
-      <div class="text-3xl tabular-nums">{props.price.value}</div>
-      <div class="flex gap-8 py-6">{state.text}</div>
+      <div class="text-3xl tabular-nums">{props.price.value}ギタン</div>
+      <div class="flex gap-8 py-6">{state.buyText}</div>
+      <div class="flex gap-8 py-6">{state.sellText}</div>
     </>
   );
 }

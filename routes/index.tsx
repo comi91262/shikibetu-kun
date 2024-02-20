@@ -3,12 +3,13 @@ import Display from "../islands/Display.tsx";
 
 
 export default function Home(context: PageProps<Data | null>) {
-  const price = useSignal(0)
+  const price = useSignal(200)
   const wasmCode = Deno.readFileSync("./main.wasm");
 
   return (
       <div class="px-4 py-8 mx-auto bg-[#86efac]">
       <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
+      <h1>シレン6 値段識別</h1>
       <img
       class="my-6"
       src="/logo.svg"
@@ -16,7 +17,7 @@ export default function Home(context: PageProps<Data | null>) {
       height="128"
       alt="the Fresh logo: a sliced lemon dripping with juice"
       />
-      Memo: TODO
+      上が購入価格,下が売却価格です
       <Display price={price} wasm={wasmCode}/>
       </div>
       </div>
