@@ -16,6 +16,7 @@ export default function Home(context: PageProps<Data | null>) {
       height="128"
       alt="the Fresh logo: a sliced lemon dripping with juice"
       />
+      Memo: TODO
       <Display price={price} wasm={wasmCode}/>
       </div>
       </div>

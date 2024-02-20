@@ -45,7 +45,6 @@ export default function Display(props: DisplayProps) {
   return (
     <>
       <div class="flex gap-8 py-6">
-        <p class="text-3xl tabular-nums">{props.price.value}</p>
         <Button onClick={() => props.price.value = props.price.value * 10 + 1}>1</Button>
         <Button onClick={() => props.price.value = props.price.value * 10 + 2}>2</Button>
         <Button onClick={() => props.price.value = props.price.value * 10 + 3}>3</Button>
@@ -58,6 +57,7 @@ export default function Display(props: DisplayProps) {
         <Button onClick={() => props.price.value = props.price.value * 10 + 0}>0</Button>
         <Button onClick={() => props.price.value = 0}>Clear</Button>
       </div>
+      <div class="text-3xl tabular-nums">{props.price.value}</div>
       <div class="flex gap-8 py-6">{state.text}</div>
     </>
   );
