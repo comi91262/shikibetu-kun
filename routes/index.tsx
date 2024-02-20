@@ -17,7 +17,7 @@ export default function Home(context: PageProps<Data | null>) {
       height="128"
       alt="the Fresh logo: a sliced lemon dripping with juice"
       />
-      上が購入価格,下が売却価格です
+      上が買値による候補、下が売値による候補です
       <Display price={price} wasm={wasmCode}/>
       </div>
       </div>
