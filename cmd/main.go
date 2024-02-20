@@ -79,10 +79,10 @@ func inspect(this js.Value, i []js.Value) any {
 	// js.Global().Set("output", ))
 	// println(js.ValueOf(i[0].Int()))
 
-	fmt.Println(buy)
-	fmt.Println(i[0])
-	fmt.Println(i[0].Int())
-	fmt.Println(buy[i[0].Int()])
+	// fmt.Println(buy)
+	// fmt.Println(i[0])
+	// fmt.Println(i[0].Int())
+	// fmt.Println(buy[i[0].Int()])
 	return js.ValueOf(convert(buy[i[0].Int()]))
 }
 

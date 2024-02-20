@@ -6,9 +6,9 @@
 - お香は全て同じ値段(2000)
 
 
-- display
 - show items
 - deno deploy
+- fussy search
 
 
 

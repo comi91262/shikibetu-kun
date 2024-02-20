@@ -8,7 +8,7 @@ import Display2 from "../islands/Display2.tsx";
 
 export default function Home(context: PageProps<Data | null>) {
     const { data } = context;
-    //if (!data) {
+    //if (!data) {AAAAAAAAAAAAAAAAAP
     //    return (
     //        <>
     //        <div>Something went wrong!</div>
@@ -19,13 +19,15 @@ export default function Home(context: PageProps<Data | null>) {
     //const { placeholder } = data;
         // <h1 class="text-4xl font-bold">{inspect(200)}</h1>
     const count = useSignal(200)
-    const text = useComputed(() => inspect(count.value).join());
+   // const text = useComputed(() => inspect(count.value).join());
+
+ const wasmCode = Deno.readFileSync("./islands/main.wasm");
 
     return (
-        <div class="px-4 py-8 mx-auto bg-[#86efac]">{text.value}
+        <div class="px-4 py-8 mx-auto bg-[#86efac]">
         <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
 
-        <Display price={count} text={text} />
+        <Display price={count} text={"a"} wasm={wasmCode}/>
         <Counter count={count}  />
         <Button onClick={() => console.log("a")}> aaaaaaac</Button>
         <img

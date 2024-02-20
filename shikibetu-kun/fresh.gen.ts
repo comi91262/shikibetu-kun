@@ -14,6 +14,8 @@ import * as $Countdown from "./islands/Countdown.tsx";
 import * as $Counter from "./islands/Counter.tsx";
 import * as $Display from "./islands/Display.tsx";
 import * as $Display2 from "./islands/Display2.tsx";
+import * as $util from "./islands/util.tsx";
+import * as $wasm_exec from "./islands/wasm_exec.js";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -32,6 +34,8 @@ const manifest = {
     "./islands/Counter.tsx": $Counter,
     "./islands/Display.tsx": $Display,
     "./islands/Display2.tsx": $Display2,
+    "./islands/util.tsx": $util,
+    "./islands/wasm_exec.js": $wasm_exec,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
