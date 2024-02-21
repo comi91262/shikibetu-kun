@@ -1,14 +1,13 @@
-import { JSX } from "preact";
-import type { Signal } from "@preact/signals";
+import { useSignal } from "@preact/signals";
 import { useEffect, useState } from "preact/hooks";
+import { JSX } from "preact";
 import RadioButton from "../components/RadioButton.tsx";
-import { Tasks } from "../components/Tasks.tsx";
 import NumberKeyboard from "../components/NumberKeyBoard.tsx"
+import { Tasks } from "../components/Tasks.tsx";
 import "./wasm_exec.js";
 
 interface DisplayProps {
   wasm: Uint8Array
-  price: Signal<number>;
 }
 
 interface State {
@@ -20,6 +19,7 @@ interface State {
 }
 
 export default function Display(props: DisplayProps) {
+  const price = useSignal(0)
 
   const [state, setState] = useState<State>({
     buy: null,
@@ -34,8 +34,8 @@ export default function Display(props: DisplayProps) {
       return
     }
 
-    setState({ ...state, buyText: state.buy(props.price.value), sellText: state.sell(props.price.value) });
-  }, [props.price.value]);
+    setState({ ...state, buyText: state.buy(price.value), sellText: state.sell(price.value) });
+  }, [price.value]);
 
 
   useEffect(async () => {
@@ -62,8 +62,8 @@ export default function Display(props: DisplayProps) {
   return (
     <>
       <RadioButton value={selected} onChange={changeValue}  />
-      <div class="text-3xl tabular-nums">{props.price.value}ギタン</div>
-      <NumberKeyboard n={props.price} />
+      <div class="text-3xl tabular-nums">{price.value}ギタン</div>
+      <NumberKeyboard n={price} />
       <Tasks tasks={switchText(selected)} />
     </>
   );
