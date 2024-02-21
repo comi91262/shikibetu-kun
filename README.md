@@ -8,10 +8,9 @@
 
 - TODO
 - fussy search
-- build css
-- add inspect type
+- add inspect type by type.ts
 - sinnzuii pattern
-- cc
+- creative common check
 - tiny Go
 
 
