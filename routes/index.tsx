@@ -1,5 +1,6 @@
 import { useSignal } from "@preact/signals";
 import Display from "../islands/Display.tsx";
+import Header from "../components/Header.tsx";
 
 
 export default function Home(context: PageProps<Data | null>) {
@@ -9,14 +10,7 @@ export default function Home(context: PageProps<Data | null>) {
   return (
       <div class="px-4 py-8 mx-auto bg-[#86efac]">
       <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-      <h1>シレン6 値段識別</h1>
-      <img
-      class="my-6"
-      src="/logo.svg"
-      width="128"
-      height="128"
-      alt="the Fresh logo: a sliced lemon dripping with juice"
-      />
+      <Header title={"シレン6 値段識別"} active={"Docs"}/>
       <Display price={price} wasm={wasmCode}/>
       </div>
       </div>

@@ -6,12 +6,13 @@
 - お香は全て同じ値段(2000)
 
 
-- TODO
+TODO
 - fussy search
 - add inspect type by type.ts
 - sinnzuii pattern
-- creative common check
 - tiny Go
+- item lists
+- doc
 
 
 
