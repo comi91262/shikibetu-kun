@@ -4,15 +4,15 @@ import Header from "../components/Header.tsx";
 
 
 export default function Home(context: PageProps<Data | null>) {
-  const price = useSignal(200)
+  const price = useSignal(0)
   const wasmCode = Deno.readFileSync("./main.wasm");
 
   return (
-      <div class="px-4 py-8 mx-auto bg-[#86efac]">
-      <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-      <Header title={"シレン6 値段識別"} active={"Docs"}/>
-      <Display price={price} wasm={wasmCode}/>
+    <div class="px-4 py-8 mx-auto bg-[#86efac]">
+      <div class="gap-4 max-w-screen-md mx-auto flex flex-col items-center justify-center">
+        <Header title={"シレン6 値段識別"} active={"Docs"} />
+        <Display price={price} wasm={wasmCode} />
       </div>
-      </div>
+    </div>
   );
 }
