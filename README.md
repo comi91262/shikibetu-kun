@@ -6,9 +6,13 @@
 - お香は全て同じ値段(2000)
 
 
+- TODO
 - fussy search
 - build css
 - add inspect type
+- sinnzuii pattern
+- cc
+- tiny Go
 
 
 
