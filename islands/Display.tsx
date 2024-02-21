@@ -1,11 +1,9 @@
 import { JSX } from "preact";
 import type { Signal } from "@preact/signals";
 import { useEffect, useState } from "preact/hooks";
-import TextArea from "../components/Textarea.tsx";
 import RadioButton from "../components/RadioButton.tsx";
 import { Tasks } from "../components/Tasks.tsx";
-import Switch from "../components/Switch.tsx";
-import Button from "../components/Button.tsx";
+import NumberKeyboard from "../components/NumberKeyBoard.tsx"
 import "./wasm_exec.js";
 
 interface DisplayProps {
@@ -65,25 +63,7 @@ export default function Display(props: DisplayProps) {
     <>
       <RadioButton value={selected} onChange={changeValue}  />
       <div class="text-3xl tabular-nums">{props.price.value}ギタン</div>
-      <p class="flex gap-8 py-6">
-        <Button onClick={() => props.price.value = props.price.value * 10 + 1}>1</Button>
-        <Button onClick={() => props.price.value = props.price.value * 10 + 2}>2</Button>
-        <Button onClick={() => props.price.value = props.price.value * 10 + 3}>3</Button>
-      </p>
-      <p class="flex gap-8 py-6">
-        <Button onClick={() => props.price.value = props.price.value * 10 + 4}>4</Button>
-        <Button onClick={() => props.price.value = props.price.value * 10 + 5}>5</Button>
-        <Button onClick={() => props.price.value = props.price.value * 10 + 6}>6</Button>
-      </p>
-      <p class="flex gap-8 py-6">
-        <Button onClick={() => props.price.value = props.price.value * 10 + 7}>7</Button>
-        <Button onClick={() => props.price.value = props.price.value * 10 + 8}>8</Button>
-        <Button onClick={() => props.price.value = props.price.value * 10 + 9}>9</Button>
-      </p>
-      <p class="flex gap-8 py-6">
-        <Button onClick={() => props.price.value = props.price.value * 10 + 0}>0</Button>
-        <Button onClick={() => props.price.value = 0}>Clear</Button>
-      </p>
+      <NumberKeyboard n={props.price} />
       <Tasks tasks={switchText(selected)} />
     </>
   );
