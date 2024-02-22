@@ -167,18 +167,17 @@ func registerCallbacks() {
 }
 
 func main() {
-	c := make(chan struct{}, 0)
-
 	reader := bytes.NewReader(data)
 	scanner := bufio.NewScanner(reader)
 
 	for scanner.Scan() {
 		a := strings.Split(scanner.Text(), " ")
-		i := item{}
-		i.name = a[0]
-		i.price, _ = strconv.Atoi(a[1])
+		p, _ := strconv.Atoi(a[1])
 
-		items = append(items, i)
+		items = append(items, item{
+			name:  a[0],
+			price: p,
+		})
 	}
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
@@ -187,9 +186,8 @@ func main() {
 	newBuyList()
 	newSellList()
 
-	println("WASM Go Initialized")
-
-	// register functions
 	registerCallbacks()
-	<-c
+
+	log.Println("WASM Go Initialized")
+	<-make(chan bool)
 }
