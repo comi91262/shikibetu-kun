@@ -1,24 +1,15 @@
-import { useSignal } from "@preact/signals";
+import { PageProps } from "$fresh/server.ts";
 import Display from "../islands/Display.tsx";
 
 
-export default function Home(context: PageProps<Data | null>) {
-  const price = useSignal(200)
+export default function Home(context: PageProps) {
   const wasmCode = Deno.readFileSync("./main.wasm");
 
   return (
-      <div class="px-4 py-8 mx-auto bg-[#86efac]">
-      <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-      <h1>シレン6 値段識別</h1>
-      <img
-      class="my-6"
-      src="/logo.svg"
-      width="128"
-      height="128"
-      alt="the Fresh logo: a sliced lemon dripping with juice"
-      />
-      <Display price={price} wasm={wasmCode}/>
+    <div class="px-4 py-8 mx-auto bg-[#86efac]">
+      <div class="gap-4 max-w-screen-md mx-auto flex flex-col items-center justify-center">
+        <Display wasm={wasmCode} />
       </div>
-      </div>
+    </div>
   );
 }

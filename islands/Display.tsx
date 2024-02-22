@@ -1,30 +1,31 @@
-import type { Signal } from "@preact/signals";
-import { useComputed } from "@preact/signals";
+import { useSignal } from "@preact/signals";
 import { useEffect, useState } from "preact/hooks";
-import Button from "../components/Button.tsx";
+import { JSX } from "preact";
+import RadioButton from "../components/RadioButton.tsx";
+import NumberKeyboard from "../components/NumberKeyBoard.tsx"
+import { Items } from "../components/Items.tsx";
 import "./wasm_exec.js";
 
 interface DisplayProps {
   wasm: Uint8Array
-  price: Signal<number>;
 }
 
 interface State {
   buy: any;
   sell: any;
-  buyText: string;
-  sellText: string;
+  buyText: string[];
+  sellText: string[];
   isWasmReady: boolean;
 }
 
-
 export default function Display(props: DisplayProps) {
+  const price = useSignal(0)
 
   const [state, setState] = useState<State>({
     buy: null,
     sell: null,
-    buyText: "ぬれた巻物,高飛び草[祝],くねくね草[祝],いやし草,かぐわし草,胃拡張の種,胃縮小の種",
-    sellText: "ドラゴン草",
+    buyText: [], //"ぬれた巻物,高飛び草[祝],くねくね草[祝],いやし草,かぐわし草,胃拡張の種,胃縮小の種",
+    sellText: [], //"ドラゴン草",
     isWasmReady: false,
   });
 
@@ -33,8 +34,8 @@ export default function Display(props: DisplayProps) {
       return
     }
 
-    setState({ ...state, buyText: state.buy(props.price.value).join(), sellText: state.sell(props.price.value).join() });
-  }, [props.price.value]);
+    setState({ ...state, buyText: state.buy(price.value), sellText: state.sell(price.value) });
+  }, [price.value]);
 
 
   useEffect(async () => {
@@ -45,32 +46,25 @@ export default function Display(props: DisplayProps) {
     setState({ ...state, buy: buy, sell: sell, isWasmReady: true });
   }, []);
 
+  const [selected, setSelected] = useState("buy");
+  const changeValue = (event: JSX.ChangeEvent<HTMLInputElement>) => setSelected(event.target.value);
+
+  const switchText = (selected: string): string[] => {
+    switch (selected) {
+      case "buy":
+        return state.buyText;
+      case "sell":
+        return state.sellText;
+    }
+    return []
+  }
 
   return (
     <>
-      <p class="flex gap-8 py-6">
-        <Button onClick={() => props.price.value = props.price.value * 10 + 1}>1</Button>
-        <Button onClick={() => props.price.value = props.price.value * 10 + 2}>2</Button>
-        <Button onClick={() => props.price.value = props.price.value * 10 + 3}>3</Button>
-      </p>
-      <p class="flex gap-8 py-6">
-        <Button onClick={() => props.price.value = props.price.value * 10 + 4}>4</Button>
-        <Button onClick={() => props.price.value = props.price.value * 10 + 5}>5</Button>
-        <Button onClick={() => props.price.value = props.price.value * 10 + 6}>6</Button>
-      </p>
-      <p class="flex gap-8 py-6">
-        <Button onClick={() => props.price.value = props.price.value * 10 + 7}>7</Button>
-        <Button onClick={() => props.price.value = props.price.value * 10 + 8}>8</Button>
-        <Button onClick={() => props.price.value = props.price.value * 10 + 9}>9</Button>
-        <Button onClick={() => props.price.value = props.price.value * 10 + 0}>0</Button>
-      </p>
-      <p class="flex gap-8 py-6">
-        <Button onClick={() => props.price.value = 0}>Clear</Button>
-      </p>
-      <div class="text-3xl tabular-nums">{props.price.value}ギタン</div>
-      上が買値による候補、下が売値による候補です
-      <div class="flex gap-8 py-6">{state.buyText}</div>
-      <div class="flex gap-8 py-6">{state.sellText}</div>
+      <RadioButton value={selected} onChange={changeValue}  />
+      <div class="text-3xl tabular-nums">{price.value}ギタン</div>
+      <NumberKeyboard n={price} />
+      <Items items={switchText(selected)} price={price.value} />
     </>
   );
 }
