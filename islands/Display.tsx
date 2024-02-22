@@ -3,7 +3,7 @@ import { useEffect, useState } from "preact/hooks";
 import { JSX } from "preact";
 import RadioButton from "../components/RadioButton.tsx";
 import NumberKeyboard from "../components/NumberKeyBoard.tsx"
-import { Tasks } from "../components/Tasks.tsx";
+import { Items } from "../components/Items.tsx";
 import "./wasm_exec.js";
 
 interface DisplayProps {
@@ -46,8 +46,8 @@ export default function Display(props: DisplayProps) {
     setState({ ...state, buy: buy, sell: sell, isWasmReady: true });
   }, []);
 
-    const [selected, setSelected] = useState("buy");
-    const changeValue = (event: JSX.ChangeEvent<HTMLInputElement>) => setSelected(event.target.value);
+  const [selected, setSelected] = useState("buy");
+  const changeValue = (event: JSX.ChangeEvent<HTMLInputElement>) => setSelected(event.target.value);
 
   const switchText = (selected: string): string[] => {
     switch (selected) {
@@ -64,7 +64,7 @@ export default function Display(props: DisplayProps) {
       <RadioButton value={selected} onChange={changeValue}  />
       <div class="text-3xl tabular-nums">{price.value}ギタン</div>
       <NumberKeyboard n={price} />
-      <Tasks tasks={switchText(selected)} />
+      <Items items={switchText(selected)} price={price.value} />
     </>
   );
 }

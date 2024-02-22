@@ -15,17 +15,17 @@
 // }
 
 // import { ITask } from "../islands/Todo.tsx";
-import { Task } from "./Task.tsx";
+import { Item } from "./Item.tsx";
 
 interface TasksProps {
-  tasks: string[];
- // removeTask: (s: string) => void;
+  items: string[];
+  price: number;
 }
 
-export function Tasks({ tasks }: TasksProps) {
+export function Items({ items, price }: TasksProps) {
   return (
     <div class="flex flex-col gap-2 pt-2 w-full">
-      {tasks?.map((task) => <Task task={task} />)}
+      {items?.map((item) => <Item item={item} price={price} />)}
     </div>
   );
 }
