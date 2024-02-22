@@ -1,33 +1,22 @@
 {
-  "build_id": "77c98687a445e518e84d4384d85a06153fca4664",
+  "build_id": "3ae35d6109e6681cd7a18241c8c8658730c313cc",
   "files": {
     "main.js": [
-      "chunk-H2FSCAWP.js",
+      "chunk-XHNEJQGM.js",
       "chunk-KDZQCYFP.js"
     ],
     "deserializer.js": [],
     "signals.js": [
-      "chunk-DWIDEIZV.js",
-      "chunk-KDZQCYFP.js"
-    ],
-    "island-counter.js": [
-      "chunk-7QD7UMKD.js",
-      "chunk-H2FSCAWP.js",
-      "chunk-DWIDEIZV.js",
+      "chunk-BJHVABN3.js",
       "chunk-KDZQCYFP.js"
     ],
     "island-display.js": [
-      "chunk-7QD7UMKD.js",
-      "chunk-H2FSCAWP.js",
-      "chunk-DWIDEIZV.js",
+      "chunk-XHNEJQGM.js",
+      "chunk-BJHVABN3.js",
       "chunk-KDZQCYFP.js"
     ],
-    "chunk-7QD7UMKD.js": [
-      "chunk-H2FSCAWP.js",
-      "chunk-KDZQCYFP.js"
-    ],
-    "chunk-H2FSCAWP.js": [],
-    "chunk-DWIDEIZV.js": [
+    "chunk-XHNEJQGM.js": [],
+    "chunk-BJHVABN3.js": [
       "chunk-KDZQCYFP.js"
     ],
     "chunk-KDZQCYFP.js": [],
