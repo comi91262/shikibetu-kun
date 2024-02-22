@@ -61,7 +61,7 @@ func sell(this js.Value, i []js.Value) any {
 		case strings.Contains(i.name, "壺"):
 			for j := 0; j < 7; j++ {
 				n := fmt.Sprintf("[%d]", j)
-				p := int(float32(i.price+j*100) * 0.8)
+				p := int(float32(i.price+j*100) * 0.4)
 
 				// normal
 				sell[p] = append(sell[p], i.name+n)
@@ -71,7 +71,7 @@ func sell(this js.Value, i []js.Value) any {
 		case strings.Contains(i.name, "杖"):
 			for j := 0; j < 8; j++ {
 				n := fmt.Sprintf("[%d]", j)
-				p := int(float32(i.price+j*100) * 0.8)
+				p := int(float32(i.price+j*100) * 0.4)
 
 				// normal
 				sell[p] = append(sell[p], i.name+n)
@@ -79,13 +79,13 @@ func sell(this js.Value, i []js.Value) any {
 				sell[int(float32(p)*0.87)] = append(sell[int(float32(p)*0.87)], i.name+n+"[呪]")
 			}
 		case strings.Contains(i.name, "腕輪"):
-			p := int(float32(i.price) * 0.8)
+			p := int(float32(i.price) * 0.4)
 			// normal
 			sell[p] = append(sell[p], i.name)
 			// curse
 			sell[int(float32(p)*0.87)] = append(sell[int(float32(p)*0.87)], i.name+"[呪]")
 		default:
-			p := int(float32(i.price) * 0.8)
+			p := int(float32(i.price) * 0.4)
 			// normal
 			sell[p] = append(sell[p], i.name)
 			// bless
