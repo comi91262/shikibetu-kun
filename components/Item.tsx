@@ -1,3 +1,9 @@
+import IconWeed from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/plant.tsx"
+import IconScroll from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/align-box-left-stretch.tsx"
+import IconRing from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/circle-plus-2.tsx"
+import IconCane from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/cane.tsx"
+import IconPot from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/archive.tsx"
+
 interface ItemProps {
   item: string;
   price: number;
@@ -25,8 +31,3 @@ export function Item({ item, price }: ItemProps) {
 //            <img class="w-8 h-8 rounded-full" src="/unknow.jpg" alt="Neil image" />
 //          </div>
 
-// import IconPlant from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/plant.tsx"
-// import IconAlignBoxLeftStretch from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/align-box-left-stretch.tsx"
-// import IconCirclePlus2 from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/circle-plus-2.tsx"
-// import IconCane from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/cane.tsx"
-// import IconArchive from "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/archive.tsx"
