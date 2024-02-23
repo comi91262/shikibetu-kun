@@ -68,7 +68,7 @@ func newBuyList() {
 
 	for _, item := range items {
 		switch {
-		case strings.Contains(item.name, "壺"):
+		case strings.Contains(item.name, "の壺") || strings.Contains(item.name, "割れない壺"):
 			mi, mx := getPotCount(item.name)
 			for i := mi; i <= mx; i++ {
 				n := fmt.Sprintf("[%d]", i)
@@ -112,7 +112,7 @@ func newSellList() {
 
 	for _, item := range items {
 		switch {
-		case strings.Contains(item.name, "壺"):
+		case strings.Contains(item.name, "の壺") || strings.Contains(item.name, "割れない壺"):
 			mi, mx := getPotCount(item.name)
 			for i := mi; i <= mx; i++ {
 				n := fmt.Sprintf("[%d]", i)

@@ -1,8 +1,8 @@
 {
-  "build_id": "1409604e7dec5dc48fda67ffdb8fe68b749b9fe4",
+  "build_id": "63fa5f9655d81c4143908989b93cf59560c66a5e",
   "files": {
     "main.js": [
-      "chunk-HAOZYOOT.js",
+      "chunk-V36GKCRU.js",
       "chunk-KDZQCYFP.js"
     ],
     "deserializer.js": [],
@@ -11,11 +11,11 @@
       "chunk-KDZQCYFP.js"
     ],
     "island-display.js": [
-      "chunk-HAOZYOOT.js",
+      "chunk-V36GKCRU.js",
       "chunk-BJHVABN3.js",
       "chunk-KDZQCYFP.js"
     ],
-    "chunk-HAOZYOOT.js": [],
+    "chunk-V36GKCRU.js": [],
     "chunk-BJHVABN3.js": [
       "chunk-KDZQCYFP.js"
     ],
