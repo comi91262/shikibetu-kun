@@ -2,7 +2,7 @@ package main
 
 import (
 	_ "embed"
-	"log"
+	"log/slog"
 	"shikibetu-kun/cmd/shared"
 	"syscall/js"
 )
@@ -37,6 +37,6 @@ func main() {
 
 	registerCallbacks()
 
-	log.Println("WASM Go Initialized")
+	slog.Info("wasm initialized")
 	<-make(chan bool)
 }
