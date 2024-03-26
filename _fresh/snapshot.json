@@ -1,25 +1,31 @@
 {
-  "build_id": "63fa5f9655d81c4143908989b93cf59560c66a5e",
+  "build_id": "a0f4878e8e14a9feabf60b43747b265ee78e308c",
   "files": {
     "main.js": [
-      "chunk-V36GKCRU.js",
-      "chunk-KDZQCYFP.js"
+      "chunk-YKJSWG2W.js",
+      "chunk-KDZQCYFP.js",
+      "chunk-LDV6YPMG.js"
     ],
-    "deserializer.js": [],
+    "deserializer.js": [
+      "chunk-LDV6YPMG.js"
+    ],
     "signals.js": [
       "chunk-BJHVABN3.js",
-      "chunk-KDZQCYFP.js"
+      "chunk-KDZQCYFP.js",
+      "chunk-LDV6YPMG.js"
     ],
     "island-display.js": [
-      "chunk-V36GKCRU.js",
+      "chunk-YKJSWG2W.js",
       "chunk-BJHVABN3.js",
-      "chunk-KDZQCYFP.js"
+      "chunk-KDZQCYFP.js",
+      "chunk-LDV6YPMG.js"
     ],
-    "chunk-V36GKCRU.js": [],
+    "chunk-YKJSWG2W.js": [],
     "chunk-BJHVABN3.js": [
       "chunk-KDZQCYFP.js"
     ],
     "chunk-KDZQCYFP.js": [],
+    "chunk-LDV6YPMG.js": [],
     "metafile.json": []
   }
 }
