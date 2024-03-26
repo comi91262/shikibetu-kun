@@ -39,11 +39,13 @@ export default function Display(props: DisplayProps) {
 
 
   useEffect(async () => {
-    const go = new Go();
-    const r = await WebAssembly.instantiate(props.wasm, go.importObject)
+   const go = new Go();
+   // const wasm = await fetch("./wasm.wasm");
+   // const b = await wasm.arrayBuffer()
+   const r = await WebAssembly.instantiate(props.wasm, go.importObject)
 
-    go.run(r.instance)
-    setState({ ...state, buy: buy, sell: sell, isWasmReady: true });
+   go.run(r.instance)
+   setState({ ...state, buy: buy, sell: sell, isWasmReady: true });
   }, []);
 
   const [selected, setSelected] = useState("buy");
